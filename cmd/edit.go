@@ -183,7 +183,7 @@ func (p *editConnectorCmd) listConnectorProperties(name string, connector *v1.Co
 	}
 
 	maxLen := 1
-	for k, _ := range compProps {
+	for k := range compProps {
 		l := len(k)
 		if l > maxLen {
 			maxLen = l

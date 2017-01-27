@@ -221,7 +221,7 @@ func makeFunctionDeployment(function *v1.ConfigMap, runtime *v1.ConfigMap, old *
 
 	volumeName := "config"
 	items := []v1.KeyToPath{
-		v1.KeyToPath{
+		{
 			Key:  SourceProperty,
 			Path: "source.js",
 		},
@@ -292,7 +292,7 @@ func parseEnvVars(text string) []v1.EnvVar {
 				continue
 			}
 			answer = append(answer, v1.EnvVar{
-				Name: pair[0],
+				Name:  pair[0],
 				Value: pair[1],
 			})
 		}

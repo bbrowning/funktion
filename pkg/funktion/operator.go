@@ -40,12 +40,12 @@ type Operator struct {
 	//funktionClient *rest.RESTClient
 	logger log.Logger
 
-	connectorInf    cache.SharedIndexInformer
-	flowInf cache.SharedIndexInformer
-	runtimeInf      cache.SharedIndexInformer
-	functionInf     cache.SharedIndexInformer
-	deploymentInf   cache.SharedIndexInformer
-	serviceInf      cache.SharedIndexInformer
+	connectorInf  cache.SharedIndexInformer
+	flowInf       cache.SharedIndexInformer
+	runtimeInf    cache.SharedIndexInformer
+	functionInf   cache.SharedIndexInformer
+	deploymentInf cache.SharedIndexInformer
+	serviceInf    cache.SharedIndexInformer
 
 	queue *queue.Queue
 }
@@ -700,7 +700,7 @@ func (c *Operator) syncFunction(key string) error {
 	// lets copy across any missing NodePorts
 	s.Spec.Type = old.Spec.Type
 	oldPortCount := len(old.Spec.Ports)
-	for i, _ := range s.Spec.Ports {
+	for i := range s.Spec.Ports {
 		if i < oldPortCount {
 			s.Spec.Ports[i].NodePort = old.Spec.Ports[i].NodePort
 		}
